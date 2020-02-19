@@ -1,22 +1,22 @@
 
-var level = 0;
-var startGame = false;
+let level = 0;
+let startGame = false;
 
-var gamePattern = [];
-var playerPattern = [];
-var colorSelector = ["green", "red", "yellow", "blue"];
+let gamePattern = [];
+let playerPattern = [];
+const colorSelector = ["green", "red", "yellow", "blue"];
 
 
 // Keypress listener
-$(document).on("keydown", function () {
+$(document).on("keydown",  ()=> {
     if (startGame == false) {
         nextSequence();
     }
 });
 
 // player press buttons
-$(".btn").on("click", function (event) {
-    var colorPressed = event.target.id;
+$(".btn").on("click", (event)=> {
+    let colorPressed = event.target.id;
 
     playerSequence(colorPressed);
 
@@ -34,7 +34,7 @@ function nextSequence() {
     level++;
     playerPattern = [];
     $("#level-title").text("Level " + level);
-    var nextColor = colorSelector[Math.floor(Math.random() * 4)];
+    let nextColor = colorSelector[Math.floor(Math.random() * 4)];
     gamePattern.push(nextColor);
     setTimeout(function () {
         $("#" + nextColor).fadeOut(150).fadeIn(150);
